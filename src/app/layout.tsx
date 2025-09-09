@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'FinDir - Modern Financial Directory',
+  title: 'FINHUB - Modern Financial Directory',
   description: 'A curated directory of financial resources, built for the modern web.',
 };
 

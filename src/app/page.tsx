@@ -20,7 +20,7 @@ export default function Home({ searchParams }: { searchParams?: { category?: str
             <div className="p-2 bg-primary rounded-lg">
               <Flame className="text-primary-foreground" />
             </div>
-            <h1 className="text-xl font-bold text-foreground">FinDir</h1>
+            <h1 className="text-xl font-bold text-foreground">FINHUB</h1>
           </Link>
         </SidebarHeader>
         <SidebarContent>
