@@ -12,7 +12,7 @@ export function CategoryNavigation({ categories, activeCategoryId }: CategoryNav
     <SidebarMenu className="p-2">
       {categories.map((category) => (
         <SidebarMenuItem key={category.id}>
-          <Link href={`/?category=${category.id}`} className="w-full">
+          <Link href={`/directory?category=${category.id}`} className="w-full">
             <SidebarMenuButton
               isActive={category.id === activeCategoryId}
               tooltip={{ children: category.name, side: 'right' }}
