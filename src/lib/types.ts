@@ -8,6 +8,10 @@ export interface Resource {
   label: string;
   lastVerified: number;
   subcategory: string;
+  image?: {
+    url: string;
+    hint: string;
+  }
 }
 
 export interface Category {
