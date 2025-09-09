@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getCategories } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Flame } from "lucide-react";
@@ -108,6 +109,13 @@ export default function Home() {
                 return (
                   <Link href={`/directory?category=${category.id}`} key={category.id} className={cn("group", className)}>
                     <Card className="relative overflow-hidden rounded-lg h-full transition-all duration-300 group-hover:shadow-2xl group-hover:-translate-y-2">
+                       <Image
+                        src={category.image.url}
+                        alt={category.name}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        data-ai-hint={category.image.hint}
+                      />
                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10" />
                        <div className="p-6 flex flex-col justify-end h-full z-20 relative text-primary-foreground">
                          <category.icon className="w-10 h-10 mb-4 text-primary-foreground/80" />

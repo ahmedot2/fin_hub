@@ -16,4 +16,8 @@ export interface Category {
   icon: LucideIcon;
   description: string;
   resources: Resource[];
+  image: {
+    url: string;
+    hint: string;
+  }
 }
