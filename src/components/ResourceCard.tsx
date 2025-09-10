@@ -13,7 +13,7 @@ interface ResourceCardProps {
 export function ResourceCard({ resource }: ResourceCardProps) {
   return (
     <Card className={cn(
-      "flex flex-col transition-all duration-300 hover:shadow-lg h-full",
+      "flex flex-col transition-all duration-300 hover:shadow-lg h-full group",
       resource.image && "relative text-primary-foreground overflow-hidden"
     )}>
       {resource.image && (
