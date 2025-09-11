@@ -432,6 +432,3 @@ export const getCategories = (): Omit<Category, 'resources'>[] => {
 export const getCategoryWithResources = (id: string): Category | undefined => {
   return categories.find((category) => category.id === id);
 };
-
-    
-    
