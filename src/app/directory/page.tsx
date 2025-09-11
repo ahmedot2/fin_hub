@@ -7,7 +7,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { Flame } from "lucide-react";
 import Link from "next/link";
 
-export default function DirectoryPage({ searchParams }: { searchParams?: { category?: string } }) {
+export default async function DirectoryPage({ searchParams }: { searchParams?: { category?: string } }) {
   const allCategories = getCategories();
   const currentCategoryId = searchParams?.category || allCategories[0]?.id;
   const currentCategory = getCategoryWithResources(currentCategoryId);
