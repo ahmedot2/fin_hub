@@ -49,7 +49,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm fixed top-0 w-full z-50">
-        <Link href="#" className="flex items-center justify-center" prefetch={false}>
+        <Link href="/" className="flex items-center justify-center" prefetch={false}>
           <Flame className="h-6 w-6 text-primary" />
           <span className="sr-only">FINHUB</span>
         </Link>
@@ -112,8 +112,9 @@ export default function Home() {
                        <Image
                         src={category.image.url}
                         alt={category.name}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        width={600}
+                        height={400}
+                        className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                         data-ai-hint={category.image.hint}
                       />
                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10" />
