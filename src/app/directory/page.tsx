@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { Sidebar, SidebarContent, SidebarHeader, SidebarInset } from "@/components/ui/sidebar";
 import { CategoryNavigation } from "@/components/layout/CategoryNavigation";
 import { Header } from "@/components/layout/Header";
@@ -6,11 +9,14 @@ import { getCategories, getCategoryWithResources } from "@/lib/data";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { Flame } from "lucide-react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
-export default async function DirectoryPage({ searchParams }: { searchParams?: { category?: string } }) {
+export default function DirectoryPage() {
+  const searchParams = useSearchParams();
   const allCategories = getCategories();
-  const currentCategoryId = searchParams?.category || allCategories[0]?.id;
+  const currentCategoryId = searchParams.get('category') || allCategories[0]?.id;
   const currentCategory = getCategoryWithResources(currentCategoryId);
+  const [searchQuery, setSearchQuery] = useState('');
 
   return (
     <SidebarProvider>
@@ -28,11 +34,11 @@ export default async function DirectoryPage({ searchParams }: { searchParams?: {
         </SidebarContent>
       </Sidebar>
       <SidebarInset>
-        <Header />
+        <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
         <main className="p-4 sm:p-6 lg:p-8">
           <div className="mx-auto w-full max-w-[80rem]">
             {currentCategory ? (
-              <ResourceDisplay category={currentCategory} />
+              <ResourceDisplay category={currentCategory} searchQuery={searchQuery} />
             ) : (
               <div className="flex h-[calc(100vh-10rem)] items-center justify-center rounded-lg border-2 border-dashed bg-muted">
                 <div className="text-center">
