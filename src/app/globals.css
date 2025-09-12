@@ -126,7 +126,7 @@ body {
   right: -0.375rem;
   width: 6rem;
   height: 6rem;
-  background: transparent;
+  background: hsl(var(--primary));
   border-top-left-radius: 50%;
 }
 
@@ -148,6 +148,18 @@ body {
 
 .dark .card-inner .box .icon::before {
   box-shadow: 0.313rem 0.313rem 0 0.313rem hsl(var(--card));
+}
+
+.card-inner .box .icon::after {
+  position: absolute;
+  content: "";
+  top: -1.25rem;
+  right: 0.375rem;
+  background: transparent;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+  box-shadow: 0.313rem 0.313rem 0 0.313rem hsl(var(--primary));
 }
 
 .card-inner .box .icon .iconBox {
