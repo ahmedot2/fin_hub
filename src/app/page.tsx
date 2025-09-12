@@ -79,11 +79,11 @@ export default function Home() {
             playsInline
             className="absolute top-0 left-0 w-full h-full object-cover"
           />
-          <div className="relative z-20 container px-4 md:px-6 text-primary-foreground space-y-6">
+          <div className="relative z-20 container px-4 md:px-6 text-white space-y-6">
             <h1 className="text-4xl font-extrabold tracking-tighter sm:text-6xl md:text-7xl">
               Navigate the World of Finance
             </h1>
-            <p className="mx-auto max-w-[700px] text-lg text-primary-foreground/80 md:text-xl text-balance">
+            <p className="mx-auto max-w-[700px] text-lg text-white/80 md:text-xl text-balance">
               FINHUB provides a curated directory of the best financial resources, tools, and communities.
             </p>
             <div>
@@ -126,10 +126,10 @@ export default function Home() {
                       data-ai-hint={category.image.hint}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
-                    <div className="relative z-20 text-primary-foreground">
+                    <div className="relative z-20 text-white">
                       <category.icon className="mb-3 h-8 w-8" />
                       <h3 className="text-2xl font-bold">{category.name}</h3>
-                      <p className="mt-1 max-w-xs text-sm text-primary-foreground/80 text-balance">
+                      <p className="mt-1 max-w-xs text-sm text-white/80 text-balance">
                         {category.description}
                       </p>
                     </div>
@@ -179,3 +179,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
