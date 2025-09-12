@@ -115,45 +115,45 @@ export default function Home() {
         </section>
         
         <section className="w-full py-16 md:py-24 lg:py-32">
-          <div className="container mx-auto max-w-[80%] px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="text-center space-y-4 mb-12">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Explore Our Categories</h2>
               <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl text-balance">
                 Discover resources across stocks, crypto, investing, and more.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
-              {categoryGrid.map(({ id, className }) => {
-                const category = getCategories().find((c) => c.id === id);
-                if (!category) return null;
-                return (
-                  <Link
-                    href={`/directory?category=${category.id}`}
-                    key={category.id}
-                    className={cn(
-                      "group relative flex min-h-[320px] w-full flex-col justify-end overflow-hidden p-6 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1",
-                      className
-                    )}
-                  >
-                    <Image
-                      src={category.image.url}
-                      alt={category.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      data-ai-hint={category.image.hint}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
-                    <div className="relative z-20 text-white">
-                      <category.icon className="mb-3 h-8 w-8" />
-                      <h3 className="text-2xl font-bold">{category.name}</h3>
-                      <p className="mt-1 max-w-xs text-sm text-white/80 text-balance">
-                        {category.description}
-                      </p>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+            {categoryGrid.map(({ id, className }) => {
+              const category = getCategories().find((c) => c.id === id);
+              if (!category) return null;
+              return (
+                <Link
+                  href={`/directory?category=${category.id}`}
+                  key={category.id}
+                  className={cn(
+                    "group relative flex min-h-[320px] w-full flex-col justify-end overflow-hidden p-6 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1",
+                    className
+                  )}
+                >
+                  <Image
+                    src={category.image.url}
+                    alt={category.name}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    data-ai-hint={category.image.hint}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
+                  <div className="relative z-20 text-white">
+                    <category.icon className="mb-3 h-8 w-8" />
+                    <h3 className="text-2xl font-bold">{category.name}</h3>
+                    <p className="mt-1 max-w-xs text-sm text-white/80 text-balance">
+                      {category.description}
+                    </p>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </section>
 
