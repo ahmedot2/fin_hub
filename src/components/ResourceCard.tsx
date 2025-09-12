@@ -28,7 +28,7 @@ export function ResourceCard({ resource }: ResourceCardProps) {
               <p className="text-muted-foreground">No image available</p>
             </div>
           )}
-           <div className="absolute bottom-0 w-full p-4 bg-black/50 backdrop-blur-sm">
+           <div className="absolute bottom-0 w-full p-4 bg-primary">
             <h3 className="text-lg font-bold text-primary-foreground">{resource.name}</h3>
           </div>
         </div>
