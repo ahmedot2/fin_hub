@@ -122,7 +122,7 @@ export default function Home() {
                 Discover resources across stocks, crypto, investing, and more.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
               {categoryGrid.map(({ id, className }) => {
                 const category = getCategories().find((c) => c.id === id);
                 if (!category) return null;
@@ -131,7 +131,7 @@ export default function Home() {
                     href={`/directory?category=${category.id}`}
                     key={category.id}
                     className={cn(
-                      "group relative flex min-h-[320px] w-full flex-col justify-end overflow-hidden rounded-xl p-6 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1",
+                      "group relative flex min-h-[320px] w-full flex-col justify-end overflow-hidden p-6 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1",
                       className
                     )}
                   >
