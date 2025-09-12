@@ -105,6 +105,10 @@ body {
   overflow: hidden;
 }
 
+.dark .card-inner .box {
+  background: hsl(var(--card));
+}
+
 .card-inner .box .imgBox {
   position: absolute;
   inset: 0;
