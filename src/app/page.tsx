@@ -70,7 +70,6 @@ export default function Home() {
       </header>
       <main className="flex-1">
         <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center text-center">
-          <div className="absolute inset-0 bg-black/60 z-10" />
           <video
             src="/hero-background.mp4"
             autoPlay
@@ -179,5 +178,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
