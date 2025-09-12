@@ -94,7 +94,7 @@ export default function Home() {
           <div className="relative z-10 container px-4 md:px-6 text-white space-y-6">
             <h1 className="text-4xl font-extrabold tracking-tighter sm:text-6xl md:text-7xl">
               <GradientText
-                  colors={["#DAA520", "#5989CC", "#DAA520"]}
+                  colors={["#DAA520", "#C0C0C0", "#DAA520"]}
                   className="from-primary to-accent"
                 >
                   Navigate the World of Finance
