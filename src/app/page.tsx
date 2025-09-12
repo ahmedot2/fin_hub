@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/accordion"
 import { cn } from "@/lib/utils";
 import { useScroll } from "@/hooks/use-scroll";
+import GradientText from "@/components/ui/GradientText";
 
 export default function Home() {
   const categories = getCategories();
@@ -89,15 +90,21 @@ export default function Home() {
             playsInline
             className="absolute top-0 left-0 w-full h-full object-cover"
           />
+          <div className="absolute inset-0 bg-black/50" />
           <div className="relative z-10 container px-4 md:px-6 text-white space-y-6">
             <h1 className="text-4xl font-extrabold tracking-tighter sm:text-6xl md:text-7xl">
-              Navigate the World of Finance
+              <GradientText
+                  colors={["#DAA520", "#5989CC", "#DAA520"]}
+                  className="from-primary to-accent"
+                >
+                  Navigate the World of Finance
+                </GradientText>
             </h1>
             <p className="mx-auto max-w-[700px] text-lg text-white/80 md:text-xl text-balance">
               FINHUB provides a curated directory of the best financial resources, tools, and communities.
             </p>
             <div>
-              <Button asChild size="lg">
+              <Button asChild size="lg" className="text-primary-foreground">
                 <Link href="/directory">
                   Explore Directory
                   <ArrowRight className="ml-2 h-5 w-5" />
