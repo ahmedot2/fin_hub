@@ -12,12 +12,9 @@ interface ResourceCardProps {
 
 export function ResourceCard({ resource }: ResourceCardProps) {
   return (
-    <Card className={cn(
-      "flex flex-col transition-all duration-300 hover:shadow-lg h-full group",
-      resource.image && "relative text-primary-foreground overflow-hidden"
-    )}>
+    <Card className="flex flex-col transition-all duration-300 hover:shadow-lg h-full group overflow-hidden">
       {resource.image && (
-        <>
+        <div className="relative w-full aspect-[16/9] overflow-hidden">
           <Image
             src={resource.image.url}
             alt={resource.name}
@@ -25,18 +22,17 @@ export function ResourceCard({ resource }: ResourceCardProps) {
             className="object-cover transition-transform duration-500 group-hover:scale-110"
             data-ai-hint={resource.image.hint}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20 z-10" />
-        </>
+        </div>
       )}
-      <div className={cn("flex flex-col h-full", resource.image && "z-20")}>
+      <div className={cn("flex flex-col flex-grow", !resource.image && "h-full")}>
         <CardHeader>
           <div className="flex items-start justify-between gap-4">
             <CardTitle className="text-lg leading-snug">{resource.name}</CardTitle>
             <a href={resource.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${resource.name}`}>
-              <ExternalLink className={cn("h-5 w-5", !resource.image && "text-muted-foreground transition-colors hover:text-primary")} />
+              <ExternalLink className="h-5 w-5 text-muted-foreground transition-colors hover:text-primary" />
             </a>
           </div>
-          <CardDescription className={cn("pt-2 text-sm", resource.image && "text-primary-foreground/80")}>
+          <CardDescription className="pt-2 text-sm">
             {resource.description}
           </CardDescription>
         </CardHeader>
