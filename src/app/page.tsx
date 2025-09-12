@@ -68,7 +68,7 @@ export default function Home() {
         <section className="relative w-full h-[80vh] flex items-center justify-center">
           <div className="absolute inset-0 bg-black/60 z-10" />
           <video
-            src="https://videos.pexels.com/video-files/8068944/8068944-hd_1920_1080_25fps.mp4"
+            src="/hero-background.mp4"
             autoPlay
             loop
             muted
