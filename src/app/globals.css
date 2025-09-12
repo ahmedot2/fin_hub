@@ -87,6 +87,12 @@ body {
   }
 }
 
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
 .flip-card {
   background-color: transparent;
   width: 100%;
