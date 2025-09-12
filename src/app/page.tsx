@@ -46,11 +46,13 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col min-h-[100dvh]">
-      <header className="px-4 lg:px-6 h-16 flex items-center bg-background/95 backdrop-blur-sm fixed top-0 w-full z-50">
+    <div className="flex flex-col min-h-[100dvh] bg-background">
+      <header className="px-4 lg:px-6 h-16 flex items-center bg-background/80 backdrop-blur-sm fixed top-0 w-full z-50">
         <Link href="/" className="flex items-center justify-center" prefetch={false}>
-          <Flame className="h-6 w-6 text-primary" />
-          <span className="sr-only">FINHUB</span>
+          <div className="p-2 bg-primary rounded-lg">
+            <Flame className="h-6 w-6 text-primary-foreground" />
+          </div>
+          <span className="ml-3 text-2xl font-bold">FINHUB</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
           <Link href="/directory" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
@@ -59,13 +61,15 @@ export default function Home() {
           <Link href="#faq" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
             FAQ
           </Link>
-          <Link href="/submit" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-            Add Resource
-          </Link>
+          <Button asChild variant="secondary">
+            <Link href="/submit">
+              Add Resource
+            </Link>
+          </Button>
         </nav>
       </header>
       <main className="flex-1">
-        <section className="relative w-full h-[80vh] flex items-center justify-center">
+        <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center text-center">
           <div className="absolute inset-0 bg-black/60 z-10" />
           <video
             src="/hero-background.mp4"
@@ -75,11 +79,11 @@ export default function Home() {
             playsInline
             className="absolute top-0 left-0 w-full h-full object-cover"
           />
-          <div className="relative z-20 container px-4 md:px-6 text-center text-primary-foreground space-y-4">
-            <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+          <div className="relative z-20 container px-4 md:px-6 text-primary-foreground space-y-6">
+            <h1 className="text-4xl font-extrabold tracking-tighter sm:text-6xl md:text-7xl">
               Navigate the World of Finance
             </h1>
-            <p className="mx-auto max-w-[700px] text-lg md:text-xl">
+            <p className="mx-auto max-w-[700px] text-lg text-primary-foreground/80 md:text-xl text-balance">
               FINHUB provides a curated directory of the best financial resources, tools, and communities.
             </p>
             <div>
@@ -93,8 +97,8 @@ export default function Home() {
           </div>
         </section>
         
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
-          <div className="container px-4 md:px-6">
+        <section className="w-full py-16 md:py-24 lg:py-32">
+          <div className="container mx-auto max-w-[80%] px-4 md:px-6">
             <div className="text-center space-y-4 mb-12">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Explore Our Categories</h2>
               <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl text-balance">
@@ -136,22 +140,22 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-muted">
-          <div className="container px-4 md:px-6">
-            <div className="mx-auto max-w-3xl text-center">
+        <section id="faq" className="w-full py-16 md:py-24 lg:py-32 bg-muted">
+          <div className="container mx-auto max-w-3xl px-4 md:px-6">
+            <div className="text-center">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                 Frequently Asked Questions
               </h2>
-              <p className="mt-4 text-muted-foreground md:text-xl">
+              <p className="mt-4 text-muted-foreground md:text-xl text-balance">
                 Find answers to common questions about FINHUB.
               </p>
             </div>
-            <div className="mx-auto max-w-3xl mt-12">
+            <div className="mt-12">
               <Accordion type="single" collapsible className="w-full">
                 {faqItems.map((item, index) => (
                   <AccordionItem value={`item-${index + 1}`} key={index}>
-                    <AccordionTrigger className="text-lg font-medium">{item.question}</AccordionTrigger>
-                    <AccordionContent className="text-base text-muted-foreground">
+                    <AccordionTrigger className="text-lg font-medium text-left">{item.question}</AccordionTrigger>
+                    <AccordionContent className="text-base text-muted-foreground text-left">
                       {item.answer}
                     </AccordionContent>
                   </AccordionItem>
