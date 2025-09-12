@@ -9,7 +9,7 @@ export const categories: Category[] = [
     icon: TrendingUp,
     description: 'Resources for stock market analysis, trading, and news.',
     image: {
-      url: '/screenshots/s-ex-1.png',
+      url: '/category-stocks.jpg',
       hint: 'stock market'
     },
     resources: [
@@ -101,7 +101,7 @@ export const categories: Category[] = [
     icon: Bitcoin,
     description: 'Your guide to the world of cryptocurrencies and blockchain technology.',
     image: {
-      url: '/screenshots/cr-ex-2.png',
+      url: '/category-crypto.jpg',
       hint: 'crypto coin'
     },
     resources: [
@@ -203,7 +203,7 @@ export const categories: Category[] = [
     icon: Landmark,
     description: 'General investing principles, strategies, and resources for wealth building.',
     image: {
-      url: '/screenshots/i-web-1.png',
+      url: '/category-investing.jpg',
       hint: 'investment strategy'
     },
     resources: [
@@ -285,7 +285,7 @@ export const categories: Category[] = [
     icon: Briefcase,
     description: 'Insights into private equity, venture capital, and startup funding.',
     image: {
-      url: '/screenshots/pe-web-1.png',
+      url: '/category-pe-vc.jpg',
       hint: 'venture capital'
     },
     resources: [
@@ -367,7 +367,7 @@ export const categories: Category[] = [
     icon: Rocket,
     description: 'Exploring the intersection of finance and technology.',
     image: {
-      url: '/screenshots/ft-web-1.png',
+      url: '/category-fintech.jpg',
       hint: 'financial technology'
     },
     resources: [
@@ -432,3 +432,5 @@ export const getCategories = (): Omit<Category, 'resources'>[] => {
 export const getCategoryWithResources = (id: string): Category | undefined => {
   return categories.find((category) => category.id === id);
 };
+
+    
