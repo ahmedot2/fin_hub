@@ -67,13 +67,13 @@ export default function Home() {
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
           <Link href="/directory" className={cn(
-            "text-sm font-medium hover:underline underline-offset-4",
+            "text-sm font-medium hover:text-primary underline-offset-4 transition-colors",
             scrolled ? "text-foreground" : "text-white"
             )} prefetch={false}>
             Directory
           </Link>
           <Link href="#faq" className={cn(
-            "text-sm font-medium hover:underline underline-offset-4",
+            "text-sm font-medium hover:text-primary underline-offset-4 transition-colors",
             scrolled ? "text-foreground" : "text-white"
             )} prefetch={false}>
             FAQ
