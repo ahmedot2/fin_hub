@@ -20,7 +20,7 @@ export function ResourceCard({ resource }: ResourceCardProps) {
               src={resource.image.url}
               alt={resource.name}
               fill
-              className="object-cover"
+              className="object-contain"
               data-ai-hint={resource.image.hint}
             />
           ) : (
