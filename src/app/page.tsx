@@ -90,7 +90,7 @@ export default function Home() {
             playsInline
             className="absolute top-0 left-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/50" />
+          
           <div className="relative z-10 container px-4 md:px-6 text-white space-y-6">
             <h1 className="text-4xl font-extrabold tracking-tighter sm:text-6xl md:text-7xl">
               <GradientText
