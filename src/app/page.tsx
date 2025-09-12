@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { getCategories } from "@/lib/data";
@@ -10,9 +12,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { cn } from "@/lib/utils";
+import { useScroll } from "@/hooks/use-scroll";
 
 export default function Home() {
   const categories = getCategories();
+  const scrolled = useScroll(80);
 
   const categoryGrid = [
     { id: 'stocks', className: 'md:col-span-2' },
@@ -47,18 +51,30 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-[100dvh] bg-background">
-      <header className="px-4 lg:px-6 h-16 flex items-center bg-background/80 backdrop-blur-sm fixed top-0 w-full z-50">
+      <header className={cn(
+        "px-4 lg:px-6 h-16 flex items-center fixed top-0 w-full z-50 transition-all duration-300",
+        scrolled ? "bg-background/80 backdrop-blur-sm" : "bg-transparent"
+      )}>
         <Link href="/" className="flex items-center justify-center" prefetch={false}>
           <div className="p-2 bg-primary rounded-lg">
             <Flame className="h-6 w-6 text-primary-foreground" />
           </div>
-          <span className="ml-3 text-2xl font-bold">FINHUB</span>
+          <span className={cn(
+            "ml-3 text-2xl font-bold",
+            scrolled ? "text-foreground" : "text-white"
+            )}>FINHUB</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link href="/directory" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+          <Link href="/directory" className={cn(
+            "text-sm font-medium hover:underline underline-offset-4",
+            scrolled ? "text-foreground" : "text-white"
+            )} prefetch={false}>
             Directory
           </Link>
-          <Link href="#faq" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+          <Link href="#faq" className={cn(
+            "text-sm font-medium hover:underline underline-offset-4",
+            scrolled ? "text-foreground" : "text-white"
+            )} prefetch={false}>
             FAQ
           </Link>
         </nav>
@@ -73,7 +89,7 @@ export default function Home() {
             playsInline
             className="absolute top-0 left-0 w-full h-full object-cover"
           />
-          <div className="relative z-20 container px-4 md:px-6 text-white space-y-6">
+          <div className="relative z-10 container px-4 md:px-6 text-white space-y-6">
             <h1 className="text-4xl font-extrabold tracking-tighter sm:text-6xl md:text-7xl">
               Navigate the World of Finance
             </h1>
@@ -101,7 +117,7 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {categoryGrid.map(({ id, className }) => {
-                const category = categories.find((c) => c.id === id);
+                const category = getCategories().find((c) => c.id === id);
                 if (!category) return null;
                 return (
                   <Link
