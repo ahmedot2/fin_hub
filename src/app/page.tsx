@@ -61,11 +61,6 @@ export default function Home() {
           <Link href="#faq" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
             FAQ
           </Link>
-          <Button asChild variant="secondary">
-            <Link href="/submit">
-              Add Resource
-            </Link>
-          </Button>
         </nav>
       </header>
       <main className="flex-1">
