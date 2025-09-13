@@ -10,8 +10,9 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { Flame } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function DirectoryPage() {
+function DirectoryContent() {
   const searchParams = useSearchParams();
   const allCategories = getCategories();
   const currentCategoryId = searchParams.get('category') || allCategories[0]?.id;
@@ -52,4 +53,12 @@ export default function DirectoryPage() {
       </SidebarInset>
     </SidebarProvider>
   );
+}
+
+export default function DirectoryPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DirectoryContent />
+    </Suspense>
+  )
 }
