@@ -14,6 +14,8 @@ export function ResourceDisplay({ category, searchQuery }: ResourceDisplayProps)
     )
     .sort((a, b) => a.name.localeCompare(b.name));
 
+  const subcategoriesInOrder = [...new Set(category.resources.map(r => r.subcategory))];
+
   const resourcesBySubcategory = filteredResources.reduce((acc, resource) => {
     const sub = resource.subcategory;
     if (!acc[sub]) {
@@ -32,17 +34,23 @@ export function ResourceDisplay({ category, searchQuery }: ResourceDisplayProps)
         </p>
       </div>
 
-      {Object.keys(resourcesBySubcategory).length > 0 ? (
-        Object.entries(resourcesBySubcategory).map(([subcategory, resources]) => (
-          <section key={subcategory}>
-            <h2 className="mb-6 border-b pb-2 text-2xl font-semibold tracking-tight text-foreground">{subcategory}</h2>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {resources.map((resource) => (
-                <ResourceCard key={resource.id} resource={resource} />
-              ))}
-            </div>
-          </section>
-        ))
+      {filteredResources.length > 0 ? (
+        subcategoriesInOrder.map((subcategory) => {
+          const resources = resourcesBySubcategory[subcategory];
+          if (!resources || resources.length === 0) {
+            return null;
+          }
+          return (
+            <section key={subcategory}>
+              <h2 className="mb-6 border-b pb-2 text-2xl font-semibold tracking-tight text-foreground">{subcategory}</h2>
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+                {resources.map((resource) => (
+                  <ResourceCard key={resource.id} resource={resource} />
+                ))}
+              </div>
+            </section>
+          )
+        })
       ) : (
         <div className="flex h-[calc(100vh-20rem)] items-center justify-center rounded-lg border-2 border-dashed bg-muted">
           <div className="text-center">
