@@ -12,7 +12,6 @@ export function ResourceDisplay({ category, searchQuery }: ResourceDisplayProps)
       resource.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       resource.description.toLowerCase().includes(searchQuery.toLowerCase())
     )
-    .sort((a, b) => a.name.localeCompare(b.name));
 
   const subcategoriesInOrder = [...new Set(category.resources.map(r => r.subcategory))];
 
