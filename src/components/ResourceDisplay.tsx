@@ -7,10 +7,12 @@ interface ResourceDisplayProps {
 }
 
 export function ResourceDisplay({ category, searchQuery }: ResourceDisplayProps) {
-  const filteredResources = category.resources.filter(resource =>
-    resource.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    resource.description.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredResources = category.resources
+    .filter(resource =>
+      resource.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      resource.description.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   const resourcesBySubcategory = filteredResources.reduce((acc, resource) => {
     const sub = resource.subcategory;
