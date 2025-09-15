@@ -14,10 +14,16 @@ import {
 import { cn } from "@/lib/utils";
 import { useScroll } from "@/hooks/use-scroll";
 import GradientText from "@/components/ui/GradientText";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { useIsMobile } from "@/hooks/use-mobile";
+import React from "react";
+import type { Category } from "@/lib/types";
 
 export default function Home() {
   const categories = getCategories();
   const scrolled = useScroll(80);
+  const isMobile = useIsMobile();
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   const categoryGrid = [
     { id: 'stocks', className: 'md:col-span-2' },
@@ -49,6 +55,22 @@ export default function Home() {
       answer: "Yes, FINHUB is completely free to use. Our mission is to make financial information and resources accessible to everyone."
     }
   ];
+  
+  const DirectoryMenuContent = ({categories}: {categories: Omit<Category, 'resources'>[]}) => (
+    <div className="flex flex-col gap-2 p-4">
+      {categories.map(category => (
+        <Link 
+          href={`/directory?category=${category.id}`} 
+          key={category.id} 
+          className="flex items-center gap-3 rounded-md p-2 text-foreground hover:bg-muted"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          <category.icon className="h-5 w-5 text-primary" />
+          <span className="font-medium">{category.name}</span>
+        </Link>
+      ))}
+    </div>
+  )
 
   return (
     <div className="flex flex-col min-h-[100dvh] bg-background">
@@ -66,12 +88,32 @@ export default function Home() {
             )}>FINHUB</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link href="/directory" className={cn(
-            "text-sm font-medium hover:text-primary underline-offset-4 transition-colors",
-            scrolled ? "text-foreground" : "text-white"
-            )} prefetch={false}>
-            Directory
-          </Link>
+          {isMobile ? (
+            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+              <SheetTrigger asChild>
+                 <button className={cn(
+                    "text-sm font-medium hover:text-primary underline-offset-4 transition-colors",
+                    scrolled ? "text-foreground" : "text-white"
+                  )}>
+                  Directory
+                </button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-[80vw] max-w-sm">
+                <SheetHeader>
+                  <SheetTitle className="text-left">Categories</SheetTitle>
+                </SheetHeader>
+                <DirectoryMenuContent categories={categories} />
+              </SheetContent>
+            </Sheet>
+          ) : (
+            <Link href="/directory" className={cn(
+              "text-sm font-medium hover:text-primary underline-offset-4 transition-colors",
+              scrolled ? "text-foreground" : "text-white"
+              )} prefetch={false}>
+              Directory
+            </Link>
+          )}
+
           <Link href="#faq" className={cn(
             "text-sm font-medium hover:text-primary underline-offset-4 transition-colors",
             scrolled ? "text-foreground" : "text-white"
