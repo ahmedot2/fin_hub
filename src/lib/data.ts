@@ -1,6 +1,6 @@
 
 import type { Category } from './types';
-import { TrendingUp, Bitcoin, Landmark, Briefcase, Rocket } from 'lucide-react';
+import { TrendingUp, Bitcoin, Landmark, Briefcase, Bot } from 'lucide-react';
 
 export const categories: Category[] = [
   {
@@ -364,7 +364,7 @@ export const categories: Category[] = [
   {
     id: 'fintech',
     name: 'Fintech',
-    icon: Rocket,
+    icon: Bot,
     description: 'Exploring the intersection of finance and technology.',
     image: {
       url: '/category-fintech.jpg',
